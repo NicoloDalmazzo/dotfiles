@@ -1,0 +1,147 @@
+{
+  "layer": "top",
+  "position": "top", 
+  // "width": 20,
+  "height": 1,
+  
+  "modules-left":   ["hyprland/workspaces", "pulseaudio","pulseaudio/slider", "bluetooth"],
+  "modules-center": ["cpu"],
+  "modules-right":  ["clock#date", "clock#time", "network", "temperature" ,"battery"],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span color=\"#d8dee9\"></span>",
+      "2": "<span color=\"#d8dee9\"></span>",
+      "3": "<span color=\"#d8dee9\"></span>",
+      "4": "<span color=\"#d8dee9\"></span>",
+      "5": "<span color=\"#d8dee9\"></span>",
+      "6": "<span color=\"#d8dee9\"></span>",
+      "7": "<span color=\"#d8dee9\"></span>",
+      "8": "<span color=\"#d8dee9\"></span>",
+    },
+	"persistent-workspaces": {
+	"eDP-1": [ 1, 2, 3, 4],
+	"HDMI-A-1": [ 5, 6, 7, 8]
+	}
+},
+
+
+  "clock#time": {
+    "interval": 1,
+    "format": " {:%H:%M}",
+    "tooltip": false,
+  },
+
+  "clock#date": {
+    "interval": 10,
+    "format": " {:%d %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "bluetooth": {
+    "controller": "hci0",
+    "format": "",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "~/.config/scripts/rofi/rofi-bluetooth.sh",
+   }, 
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "",
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute 0 toggle",
+    "on-click-right": "pavucontrol",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "default": ["", "", ""]
+    }
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+ },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+      },
+    "format": "{icon}{capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂅",
+    "format-alt": "{time} {icon}",
+    "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery#bat2": {
+        "bat": "bat2"
+    },
+ 
+  "network": {
+    "interface": "wlo1",
+    "format": "{ifname}",
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "󰖪", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} {signalStrength}% \n\n{ipaddr}/{cidr} ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "~/.config/scripts/rofi/rofi-network-manager/src/ronema",
+    "max-length": 50
+  },
+
+  "hyprland/window": {
+    "format": " {initialClass} ",
+    "max-length": 50,
+    "icon": false,
+    "icon-size": 14
+  },
+
+  "hyprland/language": {
+    "format": " {}",
+    "interval": 1,
+    "format-en": "US",
+  },
+
+  "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [""]
+    },
+
+  "custom/launcher": {
+    "format": "<span color='#d8dee9'>  </span>",
+    "on-click": "rofi -show drun"
+  },
+  "custom/cpuhistory": {
+  	"exec": "~/.config/waybar/scripts/cpu_history.py -d 60",
+  	"format": "{}",
+  	"interval": 1,
+  	"return-type": "json",
+  	"on-click": "~/.config/waybar/scripts/cpu_history.py toggle"
+},
+"cpu": {
+     "interval": 1,
+     "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+     "format-icons": [
+          "<span color='#3b4252'> </span>", // green
+          "<span color='#3b4252'>▁</span>", // green
+          "<span color='#3b4252'>▂</span>", // blue
+          "<span color='#3b4252'>▃</span>", // white
+          "<span color='#3b4252'>▄</span>", // white
+          "<span color='#3b4252'>▅</span>", // yellow
+          "<span color='#3b4252'>▆</span>", // yellow
+          "<span color='#3b4252'>▇</span>", // orange
+          "<span color='#3b4252'>█</span>"  // red
+     ]
+}
+}

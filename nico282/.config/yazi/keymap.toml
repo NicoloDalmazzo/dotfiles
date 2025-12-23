@@ -1,0 +1,4 @@
+[mgr]
+append_keymap = [
+	{ on = ["m","d"], run = "create --dir", desc = "Directory: create" },
+]

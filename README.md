@@ -1,2 +1,2 @@
 # Preview
-!(./images/preview.png)
+![image](images/preview.png)

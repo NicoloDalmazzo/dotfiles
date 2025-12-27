@@ -1,0 +1,10 @@
+#!/bin/bash
+
+count=$(hyprctl monitors -j | jq 'length') 
+
+if [ "$count" -eq 1 ]; then
+    hyprctl dispatch workspace 3
+else
+    hyprctl dispatch workspace 3
+    hyprctl dispatch workspace 7
+fi

@@ -94,7 +94,7 @@ window#waybar > box {
 
 #battery {
   color: #d8dee9;
-  margin-right: 6px;
+  margin-right: 4px;
 }
 
 #window {

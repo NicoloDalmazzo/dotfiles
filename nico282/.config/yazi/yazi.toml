@@ -13,9 +13,14 @@ open_pdf = [
 	 { run = '/usr/bin/okular "$@"', block = false, orphan = true, for = 'linux' }
 ]
 
+general = [
+    { run = 'xdg-open "$@"', block = false, orphan = true, for = 'linux' }
+]
+
 [open]
 prepend_rules = [
 	{ mime = "text/*", use = "edit" },
+	{ mime = "inode/x-empty", use = "edit" },
 	{ mime = "application/pdf", use = "open_pdf" },
-	{ mime = "application/*", use = "edit" },
+	{ mime = "application/json", use = "edit" },
 ]

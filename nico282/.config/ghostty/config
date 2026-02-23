@@ -48,22 +48,27 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-# Theme
-theme = /home/nico282/.config/ghostty/Nordfox
+# THEME
+theme = /home/nico282/.config/ghostty/Nordfox #
 
-# Font
+
+# FONT
 font-family = "CommitMono Nerd Font Propo"
 
 
-# Window
+# WINDOW
 background-opacity = 0.95
 window-padding-x = 3
 window-padding-y = 3
 confirm-close-surface = false
+window-inherit-working-directory = false
 
-# Cursor
+
+# CURSOR
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-opacity = 0.90
 
 
+# CLIPBOARD
+clipboard-paste-protection = false

@@ -20,6 +20,20 @@ print_monviso() {
 }
 # Call the function
 #print_monviso
+# Cow-spoken fortunes every time you open a terminal
+
+
+function cowsayfortune {
+    NUMOFCOWS=`cowsay -l | tail -n +2 | wc -w`
+    WHICHCOW=$((RANDOM%$NUMOFCOWS+1))
+    THISCOW=`cowsay -l | tail -n +2 | sed -e 's/\ /\'$'\n/g' | sed $WHICHCOW'q;d'`
+
+    #echo "Selected cow: ${THISCOW}, from ${WHICHCOW}"
+    fortune | cowsay -f $THISCOW -W 100
+}
+
+cowsayfortune
+
 
 ZSH_DISABLE_COMPFIX="true"
 
@@ -43,6 +57,11 @@ export PATH="$PATH:/home/nico282/.cargo/env"
 export PATH="$PATH:/opt/ghidra"
 export PATH="$PATH:/snap/bin"
 export PATH="$PATH:/home/nico282/nico282/University/UNI-material/II-Year/I-Semester/SVT/Laboratory/Lab04/04lab_SC/04lab_SC/bin"
+
+unset SSH_ASKPASS
+
+
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
